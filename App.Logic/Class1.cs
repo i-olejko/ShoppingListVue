@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ShoppingngListVue.Logic
+namespace App.Logic
 {
     public class Class1
     {
