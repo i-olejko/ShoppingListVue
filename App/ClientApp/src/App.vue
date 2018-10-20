@@ -23,6 +23,13 @@
               <span class="md-list-item-text">Shop</span>
             </router-link>
           </md-list-item>
+          <md-list-item>
+            <router-link class="nav-link" to="/Cart">
+              <md-icon>shopping_cart</md-icon>
+              <span class="md-list-item-text">Cart</span>
+              <md-badge class="md-primary" :md-content="cartProductsAmountGetter" />
+            </router-link>
+          </md-list-item>
         </md-list>
       </md-app-drawer>
 
@@ -34,8 +41,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'App',
+  computed: {
+    ...mapGetters('cart', { cartProductsAmountGetter: 'cartCartItemsAmount' }),
+  },
 };
 </script>
 
@@ -55,6 +67,7 @@ a.nav-link {
   color: inherit;
   display: flex;
   text-decoration: none;
+  width: 100%;
   .md-icon{
     margin-right: 1em;
   }

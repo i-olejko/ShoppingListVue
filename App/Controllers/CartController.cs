@@ -46,8 +46,22 @@ namespace App.WebAPI.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] CartToSaveDTO cart)
         {
+            try
+            {
+                //TODO: ADD to local store
+                if(cart == null)
+                {
+                    throw new ArgumentNullException("cart");
+                }
+                s_logger.Debug($"resieved new cart with id: {cart.CartID}");
+            }
+            catch (Exception ex)
+            {
+                s_logger.Error($"error saving cart with id: {cart?.CartID.ToString() ?? "null"}",ex);
+                throw;
+            }
         }
 
         // PUT api/values/5

@@ -35,11 +35,11 @@ export default {
       console.log('going to dispatch action getNewCartId');
       this.getNewCartId()
         .then(() => {
-          // debugger;
-          // const id = this.$store.state.cart.cartId;
+          const id = this.$store.state.cart.cartId;
+          console.log(`id from server is: ${id}`);
           this.$router.push({
             name: 'shop',
-            params: { id: this.$store.state.cart.cartId },
+            params: { id },
           });
         });
     },

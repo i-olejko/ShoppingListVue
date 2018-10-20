@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="wrapper">
         <md-list class="md-triple-line">
         <ListItem v-for=" (product, idx ) in allProducts" :key="idx"  :item="product"/>
 
@@ -38,5 +38,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.wrapper{
+  height: 100%;
+  overflow: hidden;
+}
 </style>
