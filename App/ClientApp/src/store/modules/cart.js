@@ -21,6 +21,20 @@ export default {
       }
       console.log(`adding item to cart with amount: ${itemToAdd.amount}`);
     },
+    incrementAmount(state, id) {
+      const idxOfExistingItem = state.items.findIndex(i => i.id === id);
+      if (idxOfExistingItem !== -1) {
+        const newAmount = state.items[idxOfExistingItem].amount + 1;
+        state.items[idxOfExistingItem].amount = newAmount;
+      }
+    },
+    decrementAmount(state, id) {
+      const idxOfExistingItem = state.items.findIndex(i => i.id === id);
+      if (idxOfExistingItem !== -1) {
+        const newAmount = state.items[idxOfExistingItem].amount - 1;
+        state.items[idxOfExistingItem].amount = newAmount > 0 ? newAmount : 0;
+      }
+    },
   },
   getters: {
     cartCartItemsAmount(state) {
@@ -28,6 +42,17 @@ export default {
       if (state.items.length > 0) {
         retVal = state.items.map(el => el.amount).reduce((a, b) => a + b, 0);
       }
+      return retVal;
+    },
+    getCartItems(state) {
+      console.log('Getting cart items');
+      return state.items;
+    },
+    GetTotalPrice(state) {
+      let retVal = 0;
+      state.items.forEach((element) => {
+        retVal += element.price * element.amount;
+      });
       return retVal;
     },
   },
@@ -49,6 +74,12 @@ export default {
       // };
       // return axios.post('/api/cart', dataToSend)
       //   .then(() => commit('addItemToCart', product));
+    },
+    incrementAmount({ commit }, id) {
+      commit('incrementAmount', id);
+    },
+    decrementAmount({ commit }, id) {
+      commit('decrementAmount', id);
     },
   },
 };

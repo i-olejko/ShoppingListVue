@@ -1,7 +1,7 @@
 <template>
   <md-list-item>
     <md-avatar>
-      <img :src="getImage" alt="People">
+      <img :src="getImage" alt="Product">
     </md-avatar>
 
     <div class="md-list-item-text">

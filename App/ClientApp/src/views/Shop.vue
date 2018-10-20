@@ -30,7 +30,7 @@ export default {
     };
   },
   created() {
-    this.getAllProducts().then(() => this.allProducts = this.$store.state.products.all);
+    this.getAllProducts().then(() => { this.allProducts = this.$store.state.products.all; });
   },
   methods: {
     ...mapActions('products', ['getAllProducts']),
