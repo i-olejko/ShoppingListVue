@@ -44,6 +44,9 @@ namespace App.WebAPI
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
         }
     }
 }
