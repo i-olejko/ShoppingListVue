@@ -17,9 +17,10 @@ namespace App.WebAPI.Controllers
 
         public CartController(ICartService cartService)
         {
+            log4net.LogicalThreadContext.Properties["context"] = Guid.NewGuid().ToString("N");
             m_CartService = cartService;
         }
-        // GET api/values
+        // GET api/cart
         [HttpGet]
         public ActionResult<NewCartDTO> Get()
         {
